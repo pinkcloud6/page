@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>Länge eines Strings</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>
+			"use strict";
+
+			function laenge(baum){
+
+       return baum.length;
+
+      }
+
+			function clicked() {
+				let eingabe = document.getElementById("idEingabe").value;
+				let ausgabe = "Die Länge der Eingabe " + eingabe + " ist " + laenge(eingabe) + ".";
+				document.getElementById("idAusgabe").innerHTML = ausgabe;
+			}
+
+		</script>
+	</head>
+
+	<body>
+		<h1>Länge eines Strings</h1>
+		Eingabe: <input id="idEingabe" type="text" value="Franz"><br /><br />
+		<button onClick="clicked();">Berechne die Länge der Eingabe</button><br /><br />
+		<div id="idAusgabe">Hier kommt beim Klicken auf den Button eine Ausgabe.</div>
+	</body>
+</html>
