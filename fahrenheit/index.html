@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>Umrechnung einer Temperatur von Grad Celsius in Grad Fahrenheit</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<script>
+			"use strict";
+
+            		function Fahrenheit(celsius) {
+                		return 1.8 * celsius + 32;
+            		}
+
+			function clicked() {
+				let eingabe = document.getElementById("idEingabe").value;
+				let ausgabe = "Die Temperatur von " + eingabe + " Grad Celsius ist " + Fahrenheit(eingabe) + " Grad Fahrenheit.";
+				document.getElementById("idAusgabe").innerHTML = ausgabe;
+			}
+
+		</script>
+	</head>
+
+	<body>
+  
+		<h1>Umrechnung einer Temperatur von Grad Celsius in Grad Fahrenheit</h1>
+    
+		Temperatur in Grad Celsius: <input id="idEingabe" type="text" value="20"><br/><br/>
+    
+		<button onClick="clicked();">Berechne die Temperatur in Grad Fahrenheit</button><br/><br/>
+    
+		<div id="idAusgabe">Hier kommt beim Klicken auf den Button eine Ausgabe.</div>
+    
+	</body>
+  
+</html>
