@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Wertetabelle-Latif Akan</title>
+
+    <script>
+
+        function Rechne() {
+
+            var kv = parseFloat      (document.getElementById("kv").value);
+            var kf = parseFloat      (document.getElementById("kf").value);
+            var start = parseFloat   (document.getElementById("start").value);
+            var end = parseFloat     (document.getElementById("end").value);
+            var schritt = parseFloat (document.getElementById("schritt").value);
+
+            var Kostenfunktion;
+
+            var ausgabe = "";
+
+            ausgabe = ausgabe + "<table border = 1> <br>";
+            ausgabe = ausgabe + "<tr><th>x</th><th>K(x)</th></tr>";
+
+            while (start <= end) {
+
+                Kostenfunktion = kv * start + kf;
+
+                ausgabe = ausgabe + "<tr><td>" + start + "</td><td>" + Kostenfunktion + "</td></tr>";
+
+                start = start + schritt;
+            
+            }
+
+            ausgabe = ausgabe + "</table>" + "<br>";
+            document.getElementById("ausgabe").innerHTML = ausgabe;
+
+}
+    </script>
+
+</head>
+
+
+<body>
+
+    Startwert: <input id="start" type="text" value="">          <br>
+    Endwert: <input id="end" type="text" value="">              <br>
+    Variable Kosten: <input id="kv" type="text" value="">       <br>
+    fixe Kosten: <input id="kf" type="text" value="">           <br>
+    Schrittweite: <input id="schritt" type="text" value="">     <br> 
+	 <br>
+    <button onclick="Rechne()">berechne</button>           <br>
+
+    <div id="ausgabe"></div>
+
+
+
+
+
+
+</body>
+
+
+
+</html>
