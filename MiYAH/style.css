@@ -178,6 +178,9 @@ a:hover{
 	.slider {
 		display: flex;
 	}
+	#shop{
+		width: 50%;
+	}
 }
 
 /*slide-show*/
