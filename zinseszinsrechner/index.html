@@ -1,0 +1,50 @@
+<script>
+    function zinseszinsrechner() {
+    var startkapital = parseFloat (document.getElementById("startkapital").value);
+    var zinssatz = parseFloat (document.getElementById("zinssatz").value);
+    var laufzeit = parseFloat (document.getElementById("laufzeit").value);
+    var endkapital;
+    var zinsen;
+    var start = 0;
+    var ausgabe = "";
+    var endwert = "";
+
+    ausgabe = ausgabe + "<table border = 1> <br>";
+    ausgabe = ausgabe + "<tr><th>Jahr</th><th>Kapital am 1.1.</th><th>Zinsen am 31.12.</th><th>Kapital am 31.12.</th></tr>";
+
+    while (start <= laufzeit) {
+
+        zinsen = startkapital * zinssatz / 100;
+        endkapital = startkapital + zinsen;
+
+        ausgabe = ausgabe + "<tr><td>" + start + "</td><td>" + startkapital.toFixed(2) + "€" + "</td><td>" + zinsen.toFixed(2) + "€" + "</td><td>" + endkapital.toFixed(2) + "€" + "</td></tr>";
+
+        startkapital = endkapital;
+        start++;
+    }
+
+    ausgabe = ausgabe + "</table> <br>";
+
+    document.getElementById("ausgabe").innerHTML = ausgabe;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+    <h1>Zinseszinsrechner von Anisa Chakiri</h1>
+    
+    Startkapital in €: <input id="startkapital" size="6" type="text" value="1000"> <br>
+    Laufzeit in Jahren: <input id="laufzeit" size="6" type="text" value="5"> <br> <br>
+    Zinssatz in %: <input id="zinssatz" size="6" type="text" value="2"> <br>
+
+    <button onclick="zinseszinsrechner()">Rechne</button> <br>
+
+    <div id="ausgabe"></div>
+
+</body>
+
+</html>
