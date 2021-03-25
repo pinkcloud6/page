@@ -1,0 +1,80 @@
+<html>
+    
+     <head>
+     <title>Nachschüssiger Rentenendwertrechner</title>
+     <meta http-equiv="Conten-Type" content="text/html; charset=utf-8">
+
+     <script>
+
+          "use strict";
+     
+          function fEuro(number) {
+
+               return number.toFixed(2) + " €";
+
+          }
+          
+          function fRechner() {
+
+               var vZinssatz = parseFloat(document.getElementById("idZinssatz").value);
+               var vRente = parseFloat(document.getElementById("idRente").value);
+               var vLaufzeit = parseFloat(document.getElementById("idLaufzeit").value);
+               
+               var vZinsfaktor = 1 + vZinssatz / 100;
+               var vRentenendwert = vRente * (Math.pow(vZinsfaktor, vLaufzeit) -1) / (vZinsfaktor -1);
+               
+               var vZinsen;
+               var vKapitalJahresEnde;
+               
+               var vJahr = 0;
+               var vKapitalJahresAnfang = 0;
+
+               var vAusgabe = "";
+               vAusgabe = vAusgabe + "Das Endkapital beträgt " + fEuro(vRentenendwert) + ".<br><br>";
+               
+               vAusgabe = vAusgabe + "<table border=1>";
+               vAusgabe = vAusgabe + "<tr><th>Jahr</th><th>Kapital am 1.1.</th><th>Zinsen am 31.12.</th><th>Rente am 31.12</th><th>Kapital am 31.12.</th></tr>";
+
+               while (vJahr <= vLaufzeit) {
+
+                    vZinsen = vKapitalJahresAnfang * (vZinssatz / 100);
+                    vKapitalJahresEnde = vKapitalJahresAnfang + vZinsen + vRente;
+                    
+                    if (vJahr == vLaufzeit) {
+
+                         vAusgabe = vAusgabe + "<tr><td>" + vJahr + "</td><td>" + fEuro(vKapitalJahresAnfang) + "</td><td></td><td></td><td></td></tr>";
+
+                    } else {
+
+                         vAusgabe = vAusgabe + "<tr><td>" + vJahr + "</td><td>" + fEuro(vKapitalJahresAnfang) + "</td><td>" + fEuro(vZinsen) + "</td><td>" + fEuro(vRente) + "</td><td>" + fEuro(vKapitalJahresEnde) + "</td></tr>";
+
+                    }
+
+                    vKapitalJahresAnfang = vKapitalJahresEnde;
+                    vJahr++;
+               }
+
+               vAusgabe = vAusgabe + "</table>";
+               document.getElementById("idAusgabe").innerHTML = vAusgabe;
+
+          } 
+
+          </script>
+
+    </head>
+
+    <body>
+
+        <h1>Nachschüssiger Rentenendwertrechner</h1>
+
+        Zinssatz: <input id="idZinssatz" type="text" value="2">%<br>
+        Nachschüssige Rente: <input id="idRente" type="text" value="100">€<br>
+        Laufzeit: <input id="idLaufzeit" type="text" value="5"> Jahre<br><br>
+
+        <button onClick="fRechner()">Berechnen</button><br><br>
+
+        <div id="idAusgabe">Klicken Sie auf den Button Berechnen, damit hier eine Tabelle erscheint...</div>
+
+    </body>
+
+</html>
